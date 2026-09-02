@@ -272,7 +272,7 @@ body{font-family:Poppins,sans-serif; background-color: var(--bg-color);}
             </div>
           </div>
         </div>
-        <p class="text-xs text-gray-500">Preset Themes:
+        <p class="text-xs text-gray-500">Preset Themes: 
           <button onclick="applyColorPreset('#7f1d1d','#d4af37','#fffaf0')" class="underline text-[#7f1d1d] font-bold mr-2">Royal Red & Gold</button>
           <button onclick="applyColorPreset('#1e3a8a','#f59e0b','#f0f9ff')" class="underline text-blue-800 font-bold mr-2">Classic Navy & Amber</button>
           <button onclick="applyColorPreset('#0f172a','#38bdf8','#f8fafc')" class="underline text-slate-900 font-bold">Dark Slate & Cyan</button>
@@ -356,19 +356,19 @@ body{font-family:Poppins,sans-serif; background-color: var(--bg-color);}
             <select id="billSelect" class="border p-2 rounded-xl w-full mt-1 text-sm" onchange="loadBookingForBill()"><option value="">-- Select Booking --</option></select>
           </div>
           <div id="billBookingDetails" class="p-3 bg-gray-50 rounded-xl text-xs hidden"></div>
-
+          
           <div class="grid grid-cols-2 gap-2">
             <div><label class="text-[11px] font-bold">Total Package Amount ₹</label><input id="bTotal" type="number" placeholder="50000" class="border p-2 rounded-lg w-full text-sm"></div>
             <div><label class="text-[11px] font-bold">Advance Paid ₹</label><input id="bAdv" type="number" placeholder="10000" class="border p-2 rounded-lg w-full text-sm"></div>
             <div><label class="text-[11px] font-bold">Extra Charges ₹</label><input id="bExtra" type="number" placeholder="Drone, crane extra" class="border p-2 rounded-lg w-full text-sm"></div>
             <div><label class="text-[11px] font-bold">Discount ₹</label><input id="bDiscount" type="number" placeholder="0" class="border p-2 rounded-lg w-full text-sm"></div>
           </div>
-
+          
           <div>
             <label class="text-[11px] font-bold">Bill Notes / Inclusion Summary</label>
             <textarea id="bPackage" placeholder="Jaise: 2 Photographer, 1 Cinematic Videographer, 1 Drone..." class="border p-2 rounded-lg w-full text-sm" rows="2"></textarea>
           </div>
-
+          
           <div>
             <label class="text-[11px] font-bold">Payment Status</label>
             <select id="bStatus" class="border p-2 rounded-lg w-full text-sm">
@@ -572,10 +572,10 @@ function getCmsConfig() {
 
 function applyCmsConfigToUi() {
   const cfg = getCmsConfig();
-
+  
   // Page & Title
   document.getElementById("sitePageTitle").innerText = `${cfg.studioName} - ${cfg.tagline} | CMS Admin Controlled`;
-
+  
   // Custom Dynamic Styles (Colors)
   const styleEl = document.getElementById("customDynamicStyles");
   styleEl.innerHTML = `
@@ -592,7 +592,7 @@ function applyCmsConfigToUi() {
     .theme-text-accent { color: ${cfg.accentColor} !important; }
     .theme-border-accent { border-color: ${cfg.accentColor} !important; }
   `;
-
+  
   // Header Branding
   document.getElementById("navStudioName").innerText = cfg.studioName;
   document.getElementById("navStudioName").style.color = cfg.primaryColor;
@@ -601,7 +601,7 @@ function applyCmsConfigToUi() {
     document.getElementById("navLogoImg").src = cfg.logoUrl;
     document.getElementById("heroLogoImg").src = cfg.logoUrl;
   }
-
+  
   // Hero Section
   document.getElementById("heroStudioTitle").innerText = cfg.studioName.toUpperCase();
   document.getElementById("heroStudioTitle").style.color = cfg.accentColor;
@@ -609,7 +609,7 @@ function applyCmsConfigToUi() {
   document.getElementById("heroHighlightText").innerText = cfg.heroHighlight;
   document.getElementById("heroHighlightText").style.color = cfg.accentColor;
   document.getElementById("heroDescription").innerText = cfg.heroSub;
-
+  
   // Camera Equipment List in Booking
   const camGrid = document.getElementById("bookingCameraGrid");
   if (camGrid) {
@@ -620,7 +620,7 @@ function applyCmsConfigToUi() {
       </label>
     `).join('');
   }
-
+  
   // Home Services Grid
   const srvGrid = document.getElementById("homeServicesGrid");
   if (srvGrid) {
@@ -631,7 +631,7 @@ function applyCmsConfigToUi() {
       </div>
     `).join('');
   }
-
+  
   // Home Packages Preview
   const homePkgGrid = document.getElementById("homePackagesGrid");
   if (homePkgGrid) {
@@ -647,7 +647,7 @@ function applyCmsConfigToUi() {
       </div>
     `).join('');
   }
-
+  
   // Full Packages Tab Grid
   const fullPkgGrid = document.getElementById("fullPackagesGrid");
   if (fullPkgGrid) {
@@ -669,7 +669,7 @@ function applyCmsConfigToUi() {
       </div>
     `).join('');
   }
-
+  
   // AI Section Toggle & Text
   const aiSec = document.getElementById("aiSection");
   if (aiSec) {
@@ -681,7 +681,7 @@ function applyCmsConfigToUi() {
       aiSec.classList.add("hidden");
     }
   }
-
+  
   // Testimonials
   const testGrid = document.getElementById("testimonialsGrid");
   if (testGrid) {
@@ -693,7 +693,7 @@ function applyCmsConfigToUi() {
       </div>
     `).join('');
   }
-
+  
   // Footer Updates
   document.getElementById("footerStudioName").innerText = cfg.studioName;
   document.getElementById("footerAddress").innerText = cfg.address;
@@ -710,27 +710,27 @@ function populateCmsFormValues() {
   document.getElementById("cmsInputTagline").value = cfg.tagline || "";
   document.getElementById("cmsInputLogoUrl").value = cfg.logoUrl || "";
   document.getElementById("cmsLogoPreview").src = cfg.logoUrl || "";
-
+  
   document.getElementById("cmsInputPrimary").value = cfg.primaryColor || "#7f1d1d";
   document.getElementById("cmsPickerPrimary").value = cfg.primaryColor || "#7f1d1d";
   document.getElementById("cmsInputAccent").value = cfg.accentColor || "#d4af37";
   document.getElementById("cmsPickerAccent").value = cfg.accentColor || "#d4af37";
   document.getElementById("cmsInputBg").value = cfg.bgColor || "#fffaf0";
   document.getElementById("cmsPickerBg").value = cfg.bgColor || "#fffaf0";
-
+  
   document.getElementById("cmsInputHeroTitle").value = cfg.heroTitle || "";
   document.getElementById("cmsInputHeroHighlight").value = cfg.heroHighlight || "";
   document.getElementById("cmsInputHeroSub").value = cfg.heroSub || "";
-
+  
   document.getElementById("cmsInputPhone").value = cfg.phone || "";
   document.getElementById("cmsInputAddress").value = cfg.address || "";
   document.getElementById("cmsInputInsta").value = cfg.instaLink || "";
   document.getElementById("cmsInputYt").value = cfg.ytLink || "";
-
+  
   document.getElementById("cmsToggleAi").checked = !!cfg.aiEnabled;
   document.getElementById("cmsInputAiTitle").value = cfg.aiTitle || "";
   document.getElementById("cmsInputAiDesc").value = cfg.aiDesc || "";
-
+  
   renderCmsPackagesList();
   renderCmsCameraOptionsList();
   renderOwnerList();
@@ -742,10 +742,10 @@ function switchCmsTab(tabId) {
     btn.classList.remove('bg-[#7f1d1d]', 'text-white');
     btn.classList.add('bg-gray-100', 'text-gray-700');
   });
-
+  
   const targetSec = document.getElementById(tabId);
   if (targetSec) targetSec.classList.remove('hidden');
-
+  
   const btn = document.getElementById(`tabBtn-${tabId}`);
   if (btn) {
     btn.classList.remove('bg-gray-100', 'text-gray-700');
@@ -800,12 +800,12 @@ function addCmsPackage() {
   const price = Number(document.getElementById("pkgInputPrice").value || 0);
   const badge = document.getElementById("pkgInputBadge").value.trim() || "Package";
   const features = document.getElementById("pkgInputFeatures").value.trim();
-
+  
   if (!title || !price) {
     alert("Package title and price required!");
     return;
   }
-
+  
   const cfg = getCmsConfig();
   cfg.packages.push({
     id: "pkg-" + Date.now(),
@@ -815,12 +815,12 @@ function addCmsPackage() {
     features: features || "Standard Event Services"
   });
   localStorage.setItem("kumar_cms_config", JSON.stringify(cfg));
-
+  
   document.getElementById("pkgInputTitle").value = "";
   document.getElementById("pkgInputPrice").value = "";
   document.getElementById("pkgInputBadge").value = "";
   document.getElementById("pkgInputFeatures").value = "";
-
+  
   renderCmsPackagesList();
   applyCmsConfigToUi();
 }
@@ -869,7 +869,7 @@ function deleteCmsCameraOption(index) {
 // Save & Publish All CMS Changes
 function saveAndPublishCms() {
   const current = getCmsConfig();
-
+  
   const updated = {
     ...current,
     studioName: document.getElementById("cmsInputStudioName").value.trim() || current.studioName,
@@ -889,10 +889,10 @@ function saveAndPublishCms() {
     aiTitle: document.getElementById("cmsInputAiTitle").value.trim() || current.aiTitle,
     aiDesc: document.getElementById("cmsInputAiDesc").value.trim() || current.aiDesc
   };
-
+  
   localStorage.setItem("kumar_cms_config", JSON.stringify(updated));
   applyCmsConfigToUi();
-
+  
   const msg = document.getElementById("cmsSaveMsg");
   msg.classList.remove("hidden");
   msg.innerText = "🚀 All changes published live to website successfully!";
@@ -969,16 +969,16 @@ function submitBooking(){
   const bookings=JSON.parse(localStorage.getItem('kumar_bookings')||'[]');
   bookings.unshift({id,name,mobile:mob,email,address,needs,cams,customCam,events,date:new Date().toLocaleString()});
   localStorage.setItem('kumar_bookings', JSON.stringify(bookings));
-
+  
   const res=document.getElementById('bookingRes');
   res.classList.remove('hidden');
   res.innerHTML=`✅ Booking Submitted! Your Booking ID: <b>${id}</b>`;
-
+  
   const cfg = getCmsConfig();
   let msg=`*NEW BOOKING - ${cfg.studioName}*\nBooking ID: ${id}\nName: ${name}\nMobile: ${mob}\nAddress: ${address}\n\nEvents:\n`;
   events.forEach((e,i)=>{ msg+=`${i+1}. ${e.type} - ${e.date} ${e.time} @ ${e.venue}\n`; });
   msg+=`\nEquipment/Camera: ${cams.join(', ')} ${customCam}\nRequirements: ${needs}`;
-
+  
   const wa=`https://wa.me/91${cfg.phone}?text=${encodeURIComponent(msg)}`;
   setTimeout(()=>window.open(wa,'_blank'), 600);
   res.innerHTML += `<br><a href="${wa}" target="_blank" class="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded-full text-xs font-bold">📱 Send Booking to Studio WhatsApp</a>`;
@@ -1015,7 +1015,7 @@ function loadBookingForBill(){
     <b>Camera:</b> ${b.cams?.join(', ')||''} ${b.customCam||''}<br>
     <b>Requirements:</b> ${b.needs||'N/A'}
   `;
-
+  
   const bills=JSON.parse(localStorage.getItem('kumar_bills')||'[]');
   const existing=bills.find(x=>x.bookingId===id);
   if(existing){
@@ -1051,12 +1051,12 @@ function makeBill(){
   const pkg=document.getElementById('bPackage').value;
   const status=document.getElementById('bStatus').value;
   const due=total+extra-advance-discount;
-
+  
   const bills=JSON.parse(localStorage.getItem('kumar_bills')||'[]');
   const filtered=bills.filter(x=>x.bookingId!==bookingId);
   filtered.unshift({bookingId,total,advance,extra,discount,due,package:pkg,status,date:new Date().toLocaleString()});
   localStorage.setItem('kumar_bills', JSON.stringify(filtered));
-
+  
   const msg=document.getElementById('billSaveMsg');
   msg.classList.remove('hidden');
   msg.innerHTML=`✅ Bill Saved Successfully! Due: ₹${due}. Customer can check bill using Booking ID: ${bookingId}`;
