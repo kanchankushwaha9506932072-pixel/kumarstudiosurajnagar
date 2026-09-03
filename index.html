@@ -208,6 +208,7 @@ body{font-family:Poppins,sans-serif; background-color: var(--bg-color);}
         <button onclick="switchCmsTab('cmsBilling')" class="cms-tab-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700" id="tabBtn-cmsBilling">🧾 Billing & Invoices</button>
         <button onclick="switchCmsTab('cmsContact')" class="cms-tab-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700" id="tabBtn-cmsContact">📞 Address & Social</button>
         <button onclick="switchCmsTab('cmsAi')" class="cms-tab-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700" id="tabBtn-cmsAi">🤖 AI & Settings</button>
+        <button onclick="switchCmsTab('cmsDesktopSync')" class="cms-tab-btn px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700" id="tabBtn-cmsDesktopSync">💻 Windows App Sync</button>
       </div>
 
       <!-- Action Status Bar -->
@@ -243,6 +244,16 @@ body{font-family:Poppins,sans-serif; background-color: var(--bg-color);}
             <span class="text-xs text-gray-500">Logo Preview:</span>
             <img id="cmsLogoPreview" src="" class="w-12 h-12 rounded-full border border-[#d4af37] object-cover">
           </div>
+        </div>
+      </div>
+
+      <!-- CMS Section 10: Windows Desktop App Integration & Sync -->
+      <div id="cmsDesktopSync" class="cms-content-section mt-4 space-y-4 hidden">
+        <h4 class="font-bold text-sm text-[#7f1d1d] border-b pb-1">💻 Kumar Studio Billing Software Windows Desktop Application Sync</h4>
+        <div class="p-4 bg-blue-50 border border-blue-200 rounded-2xl space-y-3 text-xs">
+          <p class="font-bold text-blue-900 text-sm">💻 Windows Application Data Synchronization</p>
+          <p class="text-blue-800">Visual Studio C# Windows Application ke saath web bookings aur bills sync karne ke liye niche export button ka istemal karein. JSON file ko Windows App me Restore / Import feature se load karein.</p>
+          <button onclick="exportWebDataForDesktop()" class="bg-[#7f1d1d] text-white px-5 py-2.5 rounded-full font-bold shadow hover:bg-black transition">📥 Export Web Data to Windows App JSON</button>
         </div>
       </div>
 
@@ -1190,6 +1201,57 @@ function filterGallery(type) {
       </div>
     </div>
   `).join('');
+}
+
+function exportWebDataForDesktop() {
+  const bookings = JSON.parse(localStorage.getItem('kumar_bookings') || '[]');
+  const bills = JSON.parse(localStorage.getItem('kumar_bills') || '[]');
+  const cfg = getCmsConfig();
+
+  const desktopExport = {
+    Settings: {
+      StudioName: cfg.studioName,
+      Tagline: cfg.tagline,
+      Phone: cfg.phone,
+      Address: cfg.address,
+      UpiId: `${cfg.phone}@upi`,
+      AdminPassword: "kumar123"
+    },
+    Customers: bookings.map(b => ({
+      CustomerId: b.id,
+      Name: b.name,
+      Mobile: b.mobile,
+      Email: b.email || '',
+      Address: b.address || '',
+      Notes: b.needs || ''
+    })),
+    Bills: bills.map(b => ({
+      InvoiceNumber: b.bookingId,
+      BookingId: b.bookingId,
+      CustomerName: b.bookingId,
+      TotalAmount: b.total,
+      AdvancePaid: b.advance,
+      ExtraCharges: b.extra || 0,
+      Discount: b.discount || 0,
+      DueBalance: b.due,
+      PackageDetails: b.package || '',
+      Status: b.status
+    })),
+    Packages: cfg.packages.map(p => ({
+      PackageName: p.title,
+      Price: p.price,
+      Badge: p.badge || 'Popular',
+      Inclusions: p.features
+    }))
+  };
+
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(desktopExport, null, 2));
+  const dlAnchorElem = document.createElement('a');
+  dlAnchorElem.setAttribute("href", dataStr);
+  dlAnchorElem.setAttribute("download", `KumarStudio_WebExport_${Date.now()}.json`);
+  document.body.appendChild(dlAnchorElem);
+  dlAnchorElem.click();
+  dlAnchorElem.remove();
 }
 
 // Secret Tap Admin Panel Entry
