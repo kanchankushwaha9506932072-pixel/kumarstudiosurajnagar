@@ -1,0 +1,15 @@
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.GeneratedMSBuildEditorConfig.editorconfig
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.AssemblyInfoInputs.cache
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.AssemblyInfo.cs
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.csproj.CoreCompileInputs.cache
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.sourcelink.json
+/app/bin/Debug/net8.0-windows/KumarStudioBillingSoftware
+/app/bin/Debug/net8.0-windows/KumarStudioBillingSoftware.deps.json
+/app/bin/Debug/net8.0-windows/KumarStudioBillingSoftware.runtimeconfig.json
+/app/bin/Debug/net8.0-windows/KumarStudioBillingSoftware.dll
+/app/bin/Debug/net8.0-windows/KumarStudioBillingSoftware.pdb
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.dll
+/app/obj/Debug/net8.0-windows/refint/KumarStudioBillingSoftware.dll
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.pdb
+/app/obj/Debug/net8.0-windows/KumarStudioBillingSoftware.genruntimeconfig.cache
+/app/obj/Debug/net8.0-windows/ref/KumarStudioBillingSoftware.dll
